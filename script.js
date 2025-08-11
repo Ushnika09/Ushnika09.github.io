@@ -2,6 +2,7 @@ let add=document.getElementById('btn1');
 let container=document.querySelector('.container');
 let toAdd=document.getElementById("inp")
 
+let editingTask=null
 
 add.addEventListener("click",addTask)
 
@@ -21,13 +22,21 @@ function addTask(){
     
     let innerDiv=document.createElement('div')
     innerDiv.style.cssText=` height:2.5rem;
-                           width:4rem;                          
+                           width:8rem;                          
                            display:flex;
                            justify-content:space-between;
                            align-items:center;`
 
     let task=toAdd.value.trim()
     if(!task) return
+
+    if(editingTask){
+        editingTask.innerText=task
+        editingTask=null
+        toAdd.value=''
+        add.src='add.png'
+        return
+    }
     let newP=document.createElement("p")
     newP.innerHTML=task
     toAdd.value=''
@@ -53,8 +62,22 @@ function addTask(){
         newDiv.remove()
     }
 
+    let edit=document.createElement("img")
+    edit.src="edit.png"
+    edit.style.cssText=` height:1.5rem;
+                        width:1.5rem;
+                        cursor:pointer`
+
+
+    edit.onclick=()=>{
+        toAdd.value=newP.innerHTML
+        editingTask=newP
+        add.src='update.png'
+        
+    }    
+
     newDiv.append(newP,innerDiv)
-    innerDiv.append(check,del)
+    innerDiv.append(check,edit,del)
     container.append(newDiv)
 }
 

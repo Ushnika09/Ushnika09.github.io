@@ -1,6 +1,8 @@
 
 body{
-    background: linear-gradient(125deg, #e0ffe0 0%, #ccf2ff 100%);
+    /* background: linear-gradient(125deg, #e0ffe0 0%, #ccf2ff 100%); */
+    background-image:linear-gradient(rgba(255, 183, 77, 0.3), rgba(255, 138, 101, 0.3)),
+    url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +13,12 @@ body{
 }
 
 
-.app-heading{
+.heading{
     font-size: 2rem;
     font-weight: 800;
     margin-top: 3.5rem;
+    color: #1A237E;
+
 }
 
 .add{
